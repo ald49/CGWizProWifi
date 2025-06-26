@@ -4,3 +4,5 @@
 
 void initTcpServer();
 void updateTcpServer();
+void aliveCheckClient();
+void newConnetionCheck();

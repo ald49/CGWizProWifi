@@ -1,13 +1,31 @@
 #include <Arduino.h>
 #include <tcpserver.h>
 
-//AsyncWebServer server(80);
+// AsyncWebServer server(80);
+
+void Connect_Loop(void *parameter)
+{
+
+  while (1)
+  {
+
+    vTaskDelay(pdMS_TO_TICKS(100));
+  }
+}
 
 void setup()
 {
   Serial.begin(115200);
   initTcpServer();
-  
+
+  xTaskCreatePinnedToCore(
+      Connect_Loop,
+      "Other connect task",
+      4096,
+      NULL,
+      3,
+      NULL,
+      0);
 
   // Async webserver
   // server.on("/", HTTP_GET, [](AsyncWebServerRequest *request){
@@ -22,5 +40,7 @@ void setup()
 
 void loop()
 {
+  aliveCheckClient();
+  newConnetionCheck();
   updateTcpServer();
 }

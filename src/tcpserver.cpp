@@ -8,8 +8,9 @@ WiFiClient lc0;
 WiFiClient lc1;
 WiFiClient lc2;
 bool connected = false;
+int clientid = 0;
 
-WiFiClient Clients[] = {lc0,lc1,lc2} ;
+WiFiClient Clients[] = {};
 
 void initTcpServer()
 {
@@ -22,51 +23,89 @@ void initTcpServer()
     server.setTimeout(100);
 }
 
-void updateTcpServer()
+void aliveCheckClient()
 {
-    client.setTimeout(100);
-    client.setConnectionTimeout(100);
-    //Serial.println(client.connected());
-    if (!connected)
+    for (int i = 0; i < clientid; i++)
     {
-        delay(1000);
-        client = server.accept();
-
-        if (client)
+        int test = Clients[i].write(1);
+        Serial.print(test);
+        if (test == 0)
         {
-            Serial.println("Got a client !");
-            if (client.connected())
-            {
-                Serial.println("and it's connected!");
-                Clients[0]=client;
-                connected = true;
-            }
-            else
-            {
-                Serial.println("but it's not connected!");
-                client.stop();
-            }
+            Clients[i].stop();
+            Serial.print(" stop ");
+        }
+        if (!Clients[i].connected())
+        {
+            Serial.println("Client is gone");
+            Clients[i].stop();
+            clientid = clientid - 1;
         }
     }
-    else
-    {
+    //Serial.print(clientid);
+}
 
-        if (client.connected())
+void newConnetionCheck()
+{
+    WiFiClient client_local;
+    client_local.setTimeout(100);
+    client_local.setConnectionTimeout(100);
+    client_local = server.accept();
+
+    if (client_local)
+    {
+        Serial.println("Got a client !");
+        if (client_local.connected())
         {
-            while (client.available())
-                Serial.write(client.read());
+            Serial.println("and it's connected!");
+            Clients[clientid] = client_local;
+            clientid = clientid + 1;
         }
         else
         {
-            Serial.println("Client is gone");
-            client.stop();
-            connected = false;
-        }
-        int test = client.write(1);
-
-        if (test == 0)
-        {
-            client.stop();
+            Serial.println("but it's not connected!");
+            client_local.stop();
         }
     }
+}
+
+void updateTcpServer()
+{
+    for (int i = 0; i < clientid; i++)
+    {
+        if (Clients[i].available())
+        {
+            String data = Clients[i].readStringUntil('\n');
+            Serial.println(data);
+        }
+    }
+
+    // newConnetionCheck();
+    //  client.setTimeout(100);
+    //  client.setConnectionTimeout(100);
+    //   Serial.println(client.connected());
+    //  if (!connected)
+    //  {
+    //      delay(1000);
+    //      client = server.accept();
+
+    //   if (client)
+    //  {
+    //    Serial.println("Got a client !");
+    //    if (client.connected())
+    //    {
+    //       Serial.println("and it's connected!");
+    //       Clients[0] = client;
+    //       connected = true;
+    //   }
+    //   else
+    //   {
+    //       Serial.println("but it's not connected!");
+    //       client.stop();
+    //   }
+    // }
+    // }
+    // else
+    // {
+    // aliveCheckClient();
+    //}
 }
