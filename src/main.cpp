@@ -1,26 +1,20 @@
 #include <Arduino.h>
-#include <netMesh.h>
-
-// AsyncWebServer server(80);
-
-void Connect_Loop(void *parameter)
-{
-
-  while (1)
-  {
-
-    vTaskDelay(pdMS_TO_TICKS(100));
-  }
-}
+#include <Wireless.h>
+#include <status_led.h>
+#include <web.h>
 
 void setup()
 {
   Serial.begin(115200);
+  delay(2000);
+  Serial.println("test");
+  createsoftAP();
+  InitWeb();
+  Serial.println("test2");
 
-  setupNetMesh();
 }
 
 void loop()
 {
-  loopNetMesh();
+//Serial.println("test2");
 }
