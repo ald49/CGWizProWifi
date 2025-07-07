@@ -32,23 +32,6 @@ void notFoundinternalCommunicationApi(AsyncWebServerRequest *request)
 void internalCommunicationApi()
 {
   internalServer.on(
-      "/addmodel",
-      HTTP_POST,
-      [](AsyncWebServerRequest *request) {},
-      NULL,
-      [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
-      {
-        String json = ((char *)data);
-        Serial.println(json);
-        // JsonDocument doc;
-        // DeserializationError error = deserializeJson(doc, json);
-        // addModel(doc);
-
-        AsyncWebServerResponse *response = request->beginResponse(200, "application/json");
-        request->send(response);
-      });
-
-  internalServer.on(
       "/putdata",
       HTTP_PUT,
       [](AsyncWebServerRequest *request) {},
@@ -61,7 +44,47 @@ void internalCommunicationApi()
         // DeserializationError error = deserializeJson(doc, json);
         // addModel(doc);
 
-        AsyncWebServerResponse *response = request->beginResponse(200, "application/json");
+        // AsyncWebServerResponse *response = request->beginResponse(200, "application/json");
+        request->send(200);
+      });
+
+  internalServer.on(
+      "/getcommand",
+      HTTP_POST,
+      [](AsyncWebServerRequest *request) {},
+      NULL,
+      [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
+      {
+        String json = ((char *)data);
+        Serial.println(json);
+
+        JsonDocument doc;
+        doc = convertToJsonObj(json);
+        doc = getCommand(doc);
+        String returnJson;
+        serializeJson(doc, returnJson);
+        deleteCommand(doc["id"]);
+        
+        AsyncWebServerResponse *response = request->beginResponse(200, "application/json", returnJson);
         request->send(response);
+      }
+    );
+
+  internalServer.on(
+      "/putmsg",
+      HTTP_PUT,
+      [](AsyncWebServerRequest *request) {},
+      NULL,
+      [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
+      {
+        String json = ((char *)data);
+        Serial.println(json);
+        JsonDocument doc;
+        doc = convertToJsonObj(json);
+        // DeserializationError error = deserializeJson(doc, json);
+        //  addModel(doc);
+        addMassage(String(doc["msg"]));
+        // AsyncWebServerResponse *response = request->beginResponse(200, "application/json");
+        request->send(200);
       });
 }

@@ -9,6 +9,7 @@ void notFound(AsyncWebServerRequest *request);
 void InitWsWeb();
 // all api for model
 void GetModel_api();
+void GetScale_api();
 
 void InitWeb()
 {
@@ -26,13 +27,13 @@ void InitWeb()
 void notFound(AsyncWebServerRequest *request)
 {
   request->send(404, "application/json", "{\"message\":\"Not found\"}");
-  Serial.println("no");
   Serial.println(request->url());
 }
 
 void InitWsWeb()
 {
   GetModel_api();
+  GetScale_api();
 }
 
 void GetModel_api()
@@ -99,6 +100,10 @@ void GetScale_api()
 {
   server.on("/setscaletar", HTTP_POST, [](AsyncWebServerRequest *request)
             {    
+              JsonDocument doc;
+              doc["Unit"] = 342628709630718180;
+              doc["Command"] = "Tar";
+              addCommand(doc);
     //setscaletar();
     request->send(200); });
 

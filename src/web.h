@@ -5,5 +5,6 @@
 #include <AsyncTCP.h>
 #include <ArduinoJson.h>
 #include <WebHelper.h>
+#include <Command.h>
 
 void InitWeb();
