@@ -1,0 +1,298 @@
+{
+    "Batterytypes": [
+        {
+            "Lipo": [
+                {
+                    "batteryPercentage": 100,
+                    "batteryVoltage": 4.2,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 95,
+                    "batteryVoltage": 4.15,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 90,
+                    "batteryVoltage": 4.11,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 85,
+                    "batteryVoltage": 4.08,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 80,
+                    "batteryVoltage": 4.02,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 75,
+                    "batteryVoltage": 3.98,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 70,
+                    "batteryVoltage": 3.95,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 65,
+                    "batteryVoltage": 3.91,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 60,
+                    "batteryVoltage": 3.87,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 55,
+                    "batteryVoltage": 3.85
+                },
+                {
+                    "batteryPercentage": 50,
+                    "batteryVoltage": 3.84,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 45,
+                    "batteryVoltage": 3.82,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 40,
+                    "batteryVoltage": 3.8,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 35,
+                    "batteryVoltage": 3.79,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 30,
+                    "batteryVoltage": 3.77,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 25,
+                    "batteryVoltage": 3.75,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 20,
+                    "batteryVoltage": 3.73,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 15,
+                    "batteryVoltage": 3.71,
+                    "batteryState": 1
+                },
+                {
+                    "batteryPercentage": 10,
+                    "batteryVoltage": 3.69,
+                    "batteryState": 2
+                },
+                {
+                    "batteryPercentage": 5,
+                    "batteryVoltage": 3.61,
+                    "batteryState": 2
+                },
+                {
+                    "batteryPercentage": 0,
+                    "batteryVoltage": 3.27,
+                    "batteryState": 2
+                }
+            ]
+        },
+        {
+            "Lithium-ion": [
+                {
+                    "batteryPercentage": 100,
+                    "batteryVoltage": 3.4,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 90,
+                    "batteryVoltage": 3.55,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 80,
+                    "batteryVoltage": 3.32,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 70,
+                    "batteryVoltage": 3.30,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 60,
+                    "batteryVoltage": 3.27,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 50,
+                    "batteryVoltage": 3.26,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 40,
+                    "batteryVoltage": 3.25,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 30,
+                    "batteryVoltage": 3.22,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 20,
+                    "batteryVoltage": 3.20,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 10,
+                    "batteryVoltage": 3.00,
+                    "batteryState": 2
+                },
+                {
+                    "batteryPercentage": 0,
+                    "batteryVoltage": 2.50,
+                    "batteryState": 2
+                }
+            ]
+        },
+        {
+            "LiFePO4": [
+                {
+                    "batteryPercentage": 100,
+                    "batteryVoltage": 3.40,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 90,
+                    "batteryVoltage": 3.35,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 80,
+                    "batteryVoltage": 3.32,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 70,
+                    "batteryVoltage": 3.30,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 60,
+                    "batteryVoltage": 3.27,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 50,
+                    "batteryVoltage": 3.26,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 40,
+                    "batteryVoltage": 3.25,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 30,
+                    "batteryVoltage": 3.22,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 20,
+                    "batteryVoltage": 3.20,
+                    "batteryState": 1
+                },
+                {
+                    "batteryPercentage": 10,
+                    "batteryVoltage": 3.00,
+                    "batteryState": 2
+                },
+                {
+                    "batteryPercentage": 0,
+                    "batteryVoltage": 2.50,
+                    "batteryState": 2
+                }
+            ]
+        },
+        {
+            "NiXX": [
+                {
+                    "batteryPercentage": 100,
+                    "batteryVoltage": 1.42,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 90,
+                    "batteryVoltage": 1.4,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 80,
+                    "batteryVoltage": 1.35,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 70,
+                    "batteryVoltage": 1.3,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 60,
+                    "batteryVoltage": 1.25,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 50,
+                    "batteryVoltage": 1.21,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 40,
+                    "batteryVoltage": 1.2,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 30,
+                    "batteryVoltage": 1.15,
+                    "batteryState": 0
+                },
+                {
+                    "batteryPercentage": 20,
+                    "batteryVoltage": 1.1,
+                    "batteryState": 1
+                },
+                {
+                    "batteryPercentage": 10,
+                    "batteryVoltage": 1,
+                    "batteryState": 2
+                },
+                {
+                    "batteryPercentage": 0,
+                    "batteryVoltage": 0.9,
+                    "batteryState": 2
+                }
+            ]
+        },
+        {
+            "Off": [
+                {
+                    "batteryPercentage": 0,
+                    "batteryVoltage": 0,
+                    "batteryState": 0
+                }
+            ]
+        }
+    ]
+}

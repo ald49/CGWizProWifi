@@ -1,6 +1,6 @@
-#include <web.h>
+#include <Web.h>
 
-AsyncWebServer server(5000);
+AsyncWebServer server(80);
 AsyncCorsMiddleware cors;
 
 //  Prototypes
@@ -49,7 +49,7 @@ void GetModel_api()
 
   server.on("/getmodel", HTTP_GET, [](AsyncWebServerRequest *request)
             {   
-    int urlParm = GetUrlVarable(request->url()).toInt();
+    int urlParm = getUrlVarable(request->url()).toInt();
     JsonDocument data;
     //data = getModel(urlParm);
     String json;
@@ -70,7 +70,7 @@ void GetModel_api()
         // DeserializationError error = deserializeJson(doc, json);
         // addModel(doc);
 
-        AsyncWebServerResponse *response = request->beginResponse(200, "application/json", json);
+        AsyncWebServerResponse *response = request->beginResponse(200, "application/json");
         request->send(response);
       });
 
@@ -90,7 +90,7 @@ void GetModel_api()
 
   server.on("/deletemodel", HTTP_DELETE, [](AsyncWebServerRequest *request)
             {   
-    int urlParm = GetUrlVarable(request->url()).toInt();
+    int urlParm = getUrlVarable(request->url()).toInt();
     //deleteModel(urlParm);
     request->send(200); });
 }
@@ -104,7 +104,7 @@ void GetScale_api()
 
   server.on("/setscalecelltar", HTTP_POST, [](AsyncWebServerRequest *request)
             {    
-    int urlParm = GetUrlVarable(request->url()).toInt();
+    int urlParm = getUrlVarable(request->url()).toInt();
     //setscaletar(urlParm);
     request->send(200); });
 
@@ -115,7 +115,7 @@ void GetScale_api()
       NULL,
       [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
       {
-        int urlParm = GetUrlVarable(request->url()).toInt();
+        int urlParm = getUrlVarable(request->url()).toInt();
         String json = ((char *)data);
         JsonDocument doc;
         DeserializationError error = deserializeJson(doc, json);
