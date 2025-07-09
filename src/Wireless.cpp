@@ -63,3 +63,70 @@ bool testWifi(String STATION_SSID, String STATION_PASSWORD)
   //delay(500);
   return false;
 }
+
+void ScanWifiNet()
+{
+  int wifiCount = WiFi.scanNetworks();
+  Serial.println("Scan done");
+  int nr = 0;
+  if (wifiCount == 0)
+  {
+    Serial.println(F("no networks found"));
+  }
+  else
+  {
+    Serial.println(F("networks found"));
+    // Create empty file.
+    JsonArray wifis = WifiAvaliable["Wifis"].to<JsonArray>();
+    for (int i = 0; i <= wifiCount; i++)
+    {
+      int ssidcheck;
+      ssidcheck = 0;
+      for (JsonArray::iterator it = wifis.begin(); it != wifis.end(); ++it)
+      {
+        String jssid = (*it)["SSID"];
+        String fssid = WiFi.SSID(i).c_str();
+        if (fssid.equals(""))
+        {
+          ssidcheck = 1;
+        }
+        if (jssid.equals(fssid))
+        {
+          ssidcheck = 1;
+        }
+      }
+      if (ssidcheck == 0)
+      {
+        JsonObject wifi_local = wifis.add<JsonObject>();
+        wifi_local["SSID"] = WiFi.SSID(i).c_str();
+      }
+    }
+  }
+}
+
+JsonDocument getWifi()
+{
+  return WifiAvaliable;
+}
+
+void getrefreshWifi()
+{
+  ScanWifiNet();
+}
+
+bool setWifi(JsonDocument doc)
+{
+  bool check = false;
+  String ssid = doc["SSID"];
+  String passw = doc["password"];
+  check = testWifi(ssid, passw);
+
+  if (check)
+  {
+    STATION_SSID = ssid;
+    STATION_PASSWORD = passw;
+    saveDataWifi();
+    return true;
+  }
+  return false;
+}

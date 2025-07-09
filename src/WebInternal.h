@@ -6,5 +6,6 @@
 #include <WebHelper.h>
 #include <msg.h>
 #include <Command.h>
+#include <scale.h>
 
 void setupinternalCommunicationApi();

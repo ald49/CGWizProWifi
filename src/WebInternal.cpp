@@ -25,8 +25,6 @@ void setupinternalCommunicationApi()
 void notFoundinternalCommunicationApi(AsyncWebServerRequest *request)
 {
   request->send(404, "application/json", "{\"message\":\"Not found\"}");
-  Serial.println("no");
-  Serial.println(request->url());
 }
 
 void internalCommunicationApi()
@@ -39,12 +37,9 @@ void internalCommunicationApi()
       [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
       {
         String json = ((char *)data);
-        Serial.println(json);
-        // JsonDocument doc;
-        // DeserializationError error = deserializeJson(doc, json);
-        // addModel(doc);
-
-        // AsyncWebServerResponse *response = request->beginResponse(200, "application/json");
+        JsonDocument doc;
+        doc = convertToJsonObj(json);
+        update(doc);
         request->send(200);
       });
 
@@ -56,19 +51,15 @@ void internalCommunicationApi()
       [](AsyncWebServerRequest *request, uint8_t *data, size_t len, size_t index, size_t total)
       {
         String json = ((char *)data);
-        Serial.println(json);
-
         JsonDocument doc;
         doc = convertToJsonObj(json);
         doc = getCommand(doc);
         String returnJson;
         serializeJson(doc, returnJson);
         deleteCommand(doc["id"]);
-        
         AsyncWebServerResponse *response = request->beginResponse(200, "application/json", returnJson);
         request->send(response);
-      }
-    );
+      });
 
   internalServer.on(
       "/putmsg",

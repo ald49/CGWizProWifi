@@ -10,6 +10,7 @@ void addCommand(JsonDocument doc)
     commandsvalue["id"] = Commandnr;
     commandsvalue["Unit"] = doc["Unit"];
     commandsvalue["Command"] = doc["Command"];
+    commandsvalue["Value"] = doc["Value"];
     commandsvalue["Time"] = millis();
     Commandnr += 1;
 }
