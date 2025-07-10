@@ -40,6 +40,7 @@ void internalCommunicationApi()
         JsonDocument doc;
         doc = convertToJsonObj(json);
         update(doc);
+        CalcCG();
         request->send(200);
       });
 

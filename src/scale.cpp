@@ -1,6 +1,5 @@
 #include <scale.h>
 
-
 int NumberOfLoadcells = 3;
 
 float LoadValue[3];
@@ -13,8 +12,6 @@ float cg = 0;
 boolean loadcells_rdy[4];
 
 float CalcCG();
-
-
 
 boolean CheckLoadCell(HX711_ADC LoadCell_Local, int LoadCellNumber)
 {
@@ -112,6 +109,11 @@ float CalcCG()
     }
     switch (NumberOfLoadcells)
     {
+    case 1:
+        cg = (((LoadValue[0] * distance[0]) + (LoadValue[2] * distance[0])) + ((LoadValue[1] * distance[1]))) / TotalWeight;
+        lrdiff = ((LoadValue[0] * distance[2]) - (LoadValue[2] * distance[2])) / (LoadValue[0] + LoadValue[2]);
+        lrdiff=10;
+        break;
     case 2:
         cg = (((LoadValue[0] * distance[0])) + ((LoadValue[1] * distance[1]))) / TotalWeight;
         lrdiff = 0;
@@ -121,6 +123,6 @@ float CalcCG()
         lrdiff = ((LoadValue[0] * distance[2]) - (LoadValue[2] * distance[2])) / (LoadValue[0] + LoadValue[2]);
         break;
     }
-
+    Serial.println(lrdiff);
     return cg;
 }

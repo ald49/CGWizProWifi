@@ -7,5 +7,6 @@
 #include <msg.h>
 #include <Command.h>
 #include <scale.h>
+#include "SPIFFS.h"
 
 void setupinternalCommunicationApi();

@@ -15,6 +15,6 @@ extern float LoadValue[];
 extern float LoadCellcalibrationValue[];
 extern long long int  LoadCellId[];
 extern int NumberOfLoadcells;
-
+float CalcCG();
 extern JsonDocument docmsg;
 JsonDocument getscaledata();
